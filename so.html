@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Array Searching and Sorting</title>
+</head>
+<body>
+  <h1>Array Searching and Sorting</h1>
+
+  <!-- Integer Array -->
+  <h2>Integer Array</h2>
+  <label for="integer-array">Enter comma-separated integers:</label>
+  <input type="text" id="integer-array">
+  <br>
+  <button onclick="sortIntegerArray()">Sort Array</button>
+  <button onclick="searchIntegerArray()">Search Array</button>
+  <br><br>
+  <div id="integer-array-result"></div>
+
+  <!-- Word Array -->
+  <h2>Word Array</h2>
+  <label for="word-array">Enter comma-separated words:</label>
+  <input type="text" id="word-array">
+  <br>
+  <button onclick="sortWordArray()">Sort Array</button>
+  <button onclick="searchWordArray()">Search Array</button>
+  <br><br>
+  <div id="word-array-result"></div>
+
+  <!-- JavaScript Code -->
+  <script>
+    // Function to sort integer array
+    function sortIntegerArray() {
+      let inputArray = document.getElementById("integer-array").value.split(",");
+      inputArray = inputArray.map(x => parseInt(x.trim()));
+      inputArray.sort((a, b) => a - b);
+      document.getElementById("integer-array-result").innerHTML = "Sorted Array: " + inputArray.join(", ");
+    }
+
+    // Function to search integer array
+    function searchIntegerArray() {
+      let inputArray = document.getElementById("integer-array").value.split(",");
+      inputArray = inputArray.map(x => parseInt(x.trim()));
+      let searchValue = parseInt(prompt("Enter the integer to search for:"));
+      if (inputArray.includes(searchValue)) {
+        document.getElementById("integer-array-result").innerHTML = "Integer " + searchValue + " found at index " + inputArray.indexOf(searchValue);
+      } else {
+        document.getElementById("integer-array-result").innerHTML = "Integer " + searchValue + " not found in array.";
+      }
+    }
+
+    // Function to sort word array
+    function sortWordArray() {
+      let inputArray = document.getElementById("word-array").value.split(",");
+      inputArray = inputArray.map(x => x.trim());
+      inputArray.sort();
+      document.getElementById("word-array-result").innerHTML = "Sorted Array: " + inputArray.join(", ");
+    }
+
+    // Function to search word array
+    function searchWordArray() {
+      let inputArray = document.getElementById("word-array").value.split(",");
+      inputArray = inputArray.map(x => x.trim());
+      let searchValue = prompt("Enter the word to search for:");
+      if (inputArray.includes(searchValue)) {
+        document.getElementById("word-array-result").innerHTML = "Word '" + searchValue + "' found at index " + inputArray.indexOf(searchValue);
+      } else {
+        document.getElementById("word-array-result").innerHTML = "Word '" + searchValue + "' not found in array.";
+      }
+    }
+  </script>
+</body>
+</html>
